@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../services/flug.service', '../pipes/ort-pipe', '../flug-card/flug-card.component', '../validators/ort-validator.directive', '../validators/ort-validator-async.directive'], function(exports_1, context_1) {
+System.register(['angular2/core', '../services/flug.service', '../pipes/ort-pipe', '../flug-card/flug-card.component', '../validators/ort-validator.directive', '../validators/ort-validator-async.directive', 'angular2/router'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,8 +10,8 @@ System.register(['angular2/core', '../services/flug.service', '../pipes/ort-pipe
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, flug_service_1, ort_pipe_1, flug_card_component_1, ort_validator_directive_1, ort_validator_async_directive_1;
-    var MY_VALIDATION_DIRECTIVES, MY_PROVIDERS, MY_DIRECTIVES, FlugSuchenComponent;
+    var core_1, flug_service_1, ort_pipe_1, flug_card_component_1, ort_validator_directive_1, ort_validator_async_directive_1, router_1;
+    var MY_VALIDATION_DIRECTIVES, MY_DIRECTIVES, FlugSuchenComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -31,10 +31,12 @@ System.register(['angular2/core', '../services/flug.service', '../pipes/ort-pipe
             },
             function (ort_validator_async_directive_1_1) {
                 ort_validator_async_directive_1 = ort_validator_async_directive_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }],
         execute: function() {
             MY_VALIDATION_DIRECTIVES = [ort_validator_directive_1.OrtValidatorDirective, ort_validator_async_directive_1.OrtValidatorAsyncDirective];
-            MY_PROVIDERS = [flug_service_1.FlugService];
             MY_DIRECTIVES = [flug_card_component_1.FlugCardComponent, MY_VALIDATION_DIRECTIVES];
             FlugSuchenComponent = (function () {
                 /*
@@ -67,8 +69,7 @@ System.register(['angular2/core', '../services/flug.service', '../pipes/ort-pipe
                     core_1.Component({
                         selector: 'flug-suchen',
                         templateUrl: 'app/flug-suchen/flug-suchen.component.html',
-                        providers: [MY_PROVIDERS],
-                        directives: [MY_DIRECTIVES],
+                        directives: [MY_DIRECTIVES, router_1.ROUTER_DIRECTIVES],
                         styleUrls: ['app/flug-suchen/flug-suchen.component.css'],
                         pipes: [ort_pipe_1.OrtPipe]
                     }), 

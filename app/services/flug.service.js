@@ -25,6 +25,24 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                 function FlugService(http) {
                     this.http = http;
                 }
+                FlugService.prototype.save = function (flug) {
+                    var headers = new http_1.Headers();
+                    headers.set('Content-Type', 'text/json');
+                    var url = "http://www.angular.at/api/flug";
+                    return this.http
+                        .post(url, JSON.stringify(flug), { headers: headers })
+                        .map(function (resp) { return resp.json(); });
+                };
+                FlugService.prototype.findById = function (id) {
+                    var search = new http_1.URLSearchParams();
+                    search.set('flugNummer', id);
+                    var headers = new http_1.Headers();
+                    headers.set('Accept', 'text/json');
+                    var url = "http://www.angular.at/api/flug";
+                    return this.http
+                        .get(url, { search: search, headers: headers })
+                        .map(function (resp) { return resp.json(); });
+                };
                 FlugService.prototype.find = function (von, nach) {
                     var search = new http_1.URLSearchParams();
                     search.set('abflugort', von);

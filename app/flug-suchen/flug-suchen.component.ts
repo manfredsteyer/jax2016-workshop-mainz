@@ -6,16 +6,15 @@ import { OrtPipe} from '../pipes/ort-pipe';
 import { FlugCardComponent} from '../flug-card/flug-card.component';
 import { OrtValidatorDirective } from '../validators/ort-validator.directive';
 import { OrtValidatorAsyncDirective} from '../validators/ort-validator-async.directive';
+import { ROUTER_DIRECTIVES} from 'angular2/router';
 
 const MY_VALIDATION_DIRECTIVES = [OrtValidatorDirective, OrtValidatorAsyncDirective];
-const MY_PROVIDERS = [FlugService];
 const MY_DIRECTIVES = [FlugCardComponent, MY_VALIDATION_DIRECTIVES];
 
 @Component({
     selector: 'flug-suchen',
     templateUrl: 'app/flug-suchen/flug-suchen.component.html',
-    providers: [MY_PROVIDERS],
-    directives: [MY_DIRECTIVES],
+    directives: [MY_DIRECTIVES, ROUTER_DIRECTIVES],
     styleUrls: ['app/flug-suchen/flug-suchen.component.css'],
     pipes: [OrtPipe]
 })

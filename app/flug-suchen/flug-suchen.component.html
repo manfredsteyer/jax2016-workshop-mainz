@@ -53,12 +53,17 @@
     </div>
 </form>
 
-<div *ngFor="#flug of fluege">
+<div *ngFor="#flug of fluege" class="col-sm-4">
     
     <flug-card
         [item]="flug"
         [(selectedItem)]="selectedFlug">
+    
+        <a class="btn btn-default" [routerLink]="['/FlugEdit', {id: flug.id }]">Editieren</a>
+    
     </flug-card>
+    
+    
     
 </div>
 
