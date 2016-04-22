@@ -1,51 +1,53 @@
-<h1>Flüge suchen!</h1>
+<h1>Flüge suchen (Imp.)!</h1>
 
-<form #f="ngForm">
+<form [ngFormModel]="filter">
+    
     <div class="form-group">
         <label>Von</label>
         <input 
             ngControl="von"
-            [(ngModel)]="von" 
-            class="form-control"
-            ort
-            ortAsync
-            required
-            minlength="3"
-            maxlength="30">
+            class="form-control">
             
-            
-        <div *ngIf="!f?.controls?.von?.valid && !f?.controls?.von?.pending">
+        <div *ngIf="!filter.controls.von.valid && !filter.controls.von.pending">
             Fehler beim Validieren des Formulares!
         </div>    
         
-        <div *ngIf="f?.controls?.von?.hasError('required')">
+        <div *ngIf="filter.controls.von.hasError('required')">
             Feld ist doch ein Pflichtfeld!
         </div>    
 
-        <div *ngIf="f?.controls?.von?.hasError('minlength')">
+        <div *ngIf="filter.controls.von.hasError('minlength')">
             Feld muss doch min. 3 Zeichen haben
         </div>    
 
-        <div *ngIf="f?.controls?.von?.hasError('ort')">
-            Ort wird doch nicht angeflogen!
+        <div *ngIf="filter.controls.von.hasError('maxlength')">
+            Feld darf doch max. 30 Zeichen haben
         </div>    
 
-        <div *ngIf="f?.controls?.von?.hasError('ortAsync')">
-            Es gibt derzeit keine verfügbaren Plätze!
+        <div *ngIf="filter.controls.von.hasError('ort')">
+            Dieser Ort wird doch nicht angeflogen!
         </div>    
- 
-         <div *ngIf="f?.controls?.von?.pending">
+
+        <div *ngIf="filter.controls.von.hasError('ortAsync')">
+            Für diesen Ort sind derzeit keine Flüge frei!
+        </div>    
+
+        <div *ngIf="filter.controls.von.pending">
             <marquee>
-                Validator wird ausgeführt!
+                <blink>
+                    Validierung wird ausgeführt!
+                </blink>
             </marquee>
-        </div>  
+        </div>    
+
+
     </div>
     
     
 
     <div class="form-group">
         <label>Nach</label>
-        <input [(ngModel)]="nach" class="form-control">
+        <input ngControl="nach" class="form-control">
     </div>
 
     <div class="form-group">
@@ -53,7 +55,7 @@
     </div>
 </form>
 
-<div *ngFor="#flug of fluege">
+<div *ngFor="#flug of fluege" class="col-sm-4">
     
     <flug-card
         [item]="flug"

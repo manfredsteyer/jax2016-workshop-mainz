@@ -1,0 +1,15 @@
+
+
+.ng-invalid {
+
+    border-left-style: solid;
+    border-left-color: darkred;
+    border-left-width: 2px;       
+    
+}
+
+.ng-valid {
+    border-left-style: solid;
+    border-left-color: darkolivegreen;
+    border-left-width: 2px;       
+}
